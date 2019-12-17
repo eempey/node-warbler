@@ -18,13 +18,13 @@ messageSchema.pre('remove', async function(next){
         //find a user
         let user = await User.findById(this.user);
         //remove the id of the message from the messages list
-        user.message.remove(this.id);
+        user.messages.remove(this.id);
         // save that user
         await user.save();
         // return next
         return next()
-    } catch(e) {
-        return next(err)
+    } catch(error) {
+        return next(error)
     }
     
 })
